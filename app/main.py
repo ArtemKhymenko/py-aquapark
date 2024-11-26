@@ -11,7 +11,7 @@ class IntegerRange:
     def __set_name__(self, owner: str, name: str) -> None:
         self.private_name = f"_{name}"
 
-    def __get__(self, instance: str, owner: None = None) -> None:
+    def __get__(self, instance: str, owner: None = None) -> int:
         if instance is None:
             return self
 
@@ -73,7 +73,7 @@ class Slide:
         self.name = name
         self.limitation_class = limitation_class
 
-    def can_access(self, visitor: str) -> None:
+    def can_access(self, visitor: str) -> bool:
         try:
             self.limitation_class(
                 age=visitor.age, weight=visitor.weight, height=visitor.height
